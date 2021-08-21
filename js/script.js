@@ -1,48 +1,103 @@
 
-// function totalPrice(){
-//     const
-// }
-function addPrices(amount, ids) {
-    // getPrices(ids);
-    const priceText = document.getElementById(ids);
-    const priceValue = parseInt(priceText.innerText);
-    const setPrice = 1 * amount;
-    priceText.innerText = setPrice;
+/**********************\
+    FUNCTION FOR ID'S
+\**********************/
+function updateCost(id, amount) {
+    const cost = document.getElementById(id + '-amount');
+    const totalCost = cost.innerText = amount;
+    return totalCost;
+}
+
+function getCost(id) {
+    const cost = document.getElementById(id + '-amount').innerText;
+    const totalCost = parseInt(cost);
+    return totalCost;
 }
 
 
-document.getElementById('8gb-memory').addEventListener('click', function () {
-    const amount = 0;
-    const ids = 'extra-memory-cost';
-    addPrices(amount, ids);
-});
-document.getElementById('16gb-memory').addEventListener('click', function () {
-    const amount = 180;
-    const ids = 'extra-memory-cost';
-    addPrices(amount, ids);
-});
-document.getElementById('256gb-storage').addEventListener('click', function () {
-    const amount = 0;
-    const ids = 'extra-storage-cost';
-    addPrices(amount, ids);
-});
-document.getElementById('512gb-storage').addEventListener('click', function () {
-    const amount = 100;
-    const ids = 'extra-storage-cost';
-    addPrices(amount, ids);
-});
-document.getElementById('1tb-storage').addEventListener('click', function () {
-    const amount = 180;
-    const ids = 'extra-storage-cost';
-    addPrices(amount, ids);
-});
-document.getElementById('free-delivery').addEventListener('click', function () {
-    const amount = 0;
-    const ids = 'delivery-cost';
-    addPrices(amount, ids);
-});
-document.getElementById('costly-delivery').addEventListener('click', function () {
-    const amount = 20;
-    const ids = 'delivery-cost';
-    addPrices(amount, ids);
-});
+
+/*****************************\
+    FUNCTION FOR QUANTITY'S
+\*****************************/
+const totalPrice = document.getElementById('total-price');
+const promoTotalPrice = document.getElementById('total');
+
+
+function memoryQuantity(amount) {
+    const totalMemoryAmount = updateCost('memory', amount);
+    const totalStorageAmount = getCost('storage');
+    deliveryAmount(totalMemoryAmount, totalStorageAmount);
+}
+
+
+function storageQuantity(amount) {
+    const totalStorageAmount = updateCost('storage', amount);
+    const totalMemoryAmount = getCost('memory');
+    deliveryAmount(totalStorageAmount, totalMemoryAmount);
+}
+
+
+function deliveryQuantity(amount) {
+    const totalDeliveryAmount = updateCost('delivery', amount);
+    storageWithMemory(totalDeliveryAmount);
+}
+
+
+
+
+
+
+/**********************************\
+    FUNCTION FOR DELIVERY AMOUNT
+\**********************************/
+function deliveryAmount(totalStorageAmount, totalMemoryAmount) {
+    const totalDeliveryAmount = getCost('delivery');
+    totalPrice.innerText = parseInt(1299 + totalMemoryAmount + totalStorageAmount + totalDeliveryAmount);
+    promoTotalPrice.innerText = parseInt(1299 + totalMemoryAmount + totalStorageAmount + totalDeliveryAmount);
+}
+
+
+
+/********************************\
+    FUNCTION FOR COST COUNTING
+\********************************/
+function storageWithMemory(totalDeliveryAmount) {
+    const totalMemoryAmount = getCost('memory');
+    const totalStorageAmount = getCost('storage');
+    totalPrice.innerText = parseInt(1299 + totalMemoryAmount + totalStorageAmount + totalDeliveryAmount);
+    promoTotalPrice.innerText = parseInt(1299 + totalMemoryAmount + totalStorageAmount + totalDeliveryAmount);
+}
+
+
+
+/*****************************\
+    FUNCTION FOR PROMO CODE
+\*****************************/
+function UsePromoCode() {
+    const totalDeliveryAmount = getCost('delivery');
+    storageWithMemory(totalDeliveryAmount);
+
+    const promoCode = document.getElementById('promo-code');
+    const promoCodeValue = promoCode.value;
+
+
+
+    if (promoCodeValue.toLowerCase() == 'stevekaku') {
+        const getPromo = totalPrice.innerText * 0.2;
+        const total = totalPrice.innerText - getPromo;
+        document.getElementById('total').innerText = total;
+        swal("Congratulations!", "You have got the discounted offer successfully", "success");
+
+    }
+
+    else if (promoCode.value == '') {
+        swal("Please, input the promo code! This box should not be empty. Mind it!");
+    }
+    else {
+        swal("Wrong promo code! Please input the right one!");
+    }
+    promoCode.value = '';
+}
+
+
+
