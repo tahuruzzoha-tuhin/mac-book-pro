@@ -1,7 +1,7 @@
 
-function totalPrice(){
-    const
-}
+// function totalPrice(){
+//     const
+// }
 function addPrices(amount, ids) {
     // getPrices(ids);
     const priceText = document.getElementById(ids);
