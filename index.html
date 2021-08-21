@@ -27,7 +27,7 @@
     <main>
         <section class="pt-3 mt-5">
             <div class="container">
-                <div class="row">
+                <div class="row ">
                     <div class="col-md-6">
                         <img src="images/mac.png" class="w-75 mx-auto d-block" alt="mac.png">
                     </div>
@@ -46,8 +46,8 @@
                         -------------------------->
                         <div class="pt-4">
                             <h6>Memory</h6>
-                            <button onclick="memoryQuantity(0)">8GB unified memory</button>
-                            <button onclick="memoryQuantity(180)">16GB unified memory</button>
+                            <button class="mb-2" onclick="memoryQuantity(0)">8GB unified memory</button>
+                            <button class="mb-2" onclick="memoryQuantity(180)">16GB unified memory</button>
                         </div>
 
                         <!-------------------------
@@ -55,18 +55,20 @@
                         -------------------------->
                         <div class="pt-5">
                             <h6>Storage</h6>
-                            <button onclick="storageQuantity(0)">256GB SSD storage</button>
-                            <button onclick="storageQuantity(100)">512GB SSD storage</button>
-                            <button onclick="storageQuantity(180)">1TB SSD storage</button>
+                            <button class="mb-2" onclick="storageQuantity(0)">256GB SSD storage</button>
+                            <button class="mb-2" onclick="storageQuantity(100)">512GB SSD storage</button>
+                            <button class="mb-2" onclick="storageQuantity(180)">1TB SSD storage</button>
                         </div>
 
                         <!-------------------------
                             DELIVERY SECTION
                         -------------------------->
-                        <div class="pt-5">
+                        <div class="pt-5 ">
                             <h6>Choose your delivery option</h6>
-                            <button onclick="deliveryQuantity(0)">Friday, Aug 25 FREE Prime Delivery</button>
-                            <button onclick="deliveryQuantity(20)">Friday, Aug 21 Delivery charge $20</button>
+                            <button class="mb-2" onclick="deliveryQuantity(0)">Friday, Aug 25 FREE Prime
+                                Delivery</button>
+                            <button class="mb-2" onclick="deliveryQuantity(20)">Friday, Aug 21 Delivery charge
+                                $20</button>
                         </div>
 
 
@@ -105,7 +107,7 @@
                             <h6 class="pt-2">Add promo code</h6>
                             <div class="pb-2">
                                 <input id="promo-code" type="text" style="padding:5px">
-                                <button onclick="UsePromoCode()" class="btn btn-danger">Apply</button>
+                                <button onclick="UsePromoCode()" class=" btn btn-danger">Apply</button>
                             </div>
 
 

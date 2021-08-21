@@ -86,15 +86,17 @@ function UsePromoCode() {
         const getPromo = totalPrice.innerText * 0.2;
         const total = totalPrice.innerText - getPromo;
         document.getElementById('total').innerText = total;
-        swal("Congratulations!", "You have got the discounted offer successfully", "success");
+        swal("Congratulations!", "You have got the discount successfully!", "success");
 
     }
 
     else if (promoCode.value == '') {
-        swal("Please, input the promo code! This box should not be empty. Mind it!");
+        swal("Warning!", "Please, input the promo code! This box should not be empty.", "warning");
+
     }
     else {
-        swal("Wrong promo code! Please input the right one!");
+
+        swal("Warning!", "Wrong promo code! Please input the right one!", "error");
     }
     promoCode.value = '';
 }
